@@ -1,0 +1,468 @@
+<title>Career Insights Prospectus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  :root{
+    --paper: #EEECE3;
+    --paper-raised: #FBFAF6;
+    --ink: #18140F;
+    --ink-soft: #55503F;
+    --ink-faint: #86806C;
+    --crimson: #A8321F;
+    --crimson-deep: #7A2214;
+    --crimson-tint: #E9D6CE;
+    --gold: #A87A2E;
+    --line: #D3CDBC;
+    --shadow: 0 1px 0 rgba(24,20,15,0.06);
+    --focus: #2E5EAA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #151209;
+      --paper-raised: #1E1A12;
+      --ink: #ECE7D9;
+      --ink-soft: #B7AF97;
+      --ink-faint: #8A8368;
+      --crimson: #D3573A;
+      --crimson-deep: #E9856D;
+      --crimson-tint: #3A241C;
+      --gold: #D2A24D;
+      --line: #39351f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #151209;
+    --paper-raised: #1E1A12;
+    --ink: #ECE7D9;
+    --ink-soft: #B7AF97;
+    --ink-faint: #8A8368;
+    --crimson: #D3573A;
+    --crimson-deep: #E9856D;
+    --crimson-tint: #3A241C;
+    --gold: #D2A24D;
+    --line: #39351f;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Archivo", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--focus); outline-offset:2px;
+  }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+  .eyebrow{
+    font-family:"Space Mono", monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--crimson); font-weight:700; display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{ content:""; width:16px; height:1px; background:var(--crimson); display:inline-block; }
+  h1,h2,h3{ font-family:"Big Shoulders Display", sans-serif; text-transform:none; text-wrap:balance; margin:0; color:var(--ink); }
+  p{ line-height:1.6; color:var(--ink-soft); margin:0; }
+
+  /* ---------- Prototype banner ---------- */
+  .proto-banner{
+    background:var(--ink); color:var(--paper); font-family:"Space Mono",monospace; font-size:12.5px;
+    padding:9px clamp(16px,4vw,48px); display:flex; gap:14px; align-items:center; justify-content:center;
+    text-align:center; flex-wrap:wrap; letter-spacing:.02em;
+  }
+  .proto-banner a{ color:var(--gold); text-decoration:underline; text-underline-offset:3px; font-weight:700; }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40; background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px; gap:24px; }
+  .brand{ display:flex; flex-direction:column; line-height:1.05; }
+  .brand .name{ font-family:"Big Shoulders Display"; font-weight:800; font-size:22px; letter-spacing:.01em; }
+  .brand .sub{ font-family:"Space Mono"; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin-top:2px; }
+  .nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; font-size:14.5px; font-weight:600; }
+  .nav-links a{ text-decoration:none; border-bottom:2px solid transparent; padding-bottom:3px; }
+  .nav-links a:hover{ border-color:var(--crimson); }
+  .btn{
+    font-family:"Archivo"; font-weight:700; font-size:13.5px; letter-spacing:.02em; text-decoration:none;
+    padding:11px 20px; border-radius:2px; display:inline-block; border:1.5px solid var(--ink); cursor:pointer;
+  }
+  .btn-solid{ background:var(--crimson); border-color:var(--crimson); color:#fbf6ef; }
+  .btn-solid:hover{ background:var(--crimson-deep); border-color:var(--crimson-deep); }
+  .btn-line{ background:transparent; color:var(--ink); }
+  .btn-line:hover{ background:var(--ink); color:var(--paper); }
+  .menu-toggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:clamp(48px,8vw,96px) 0 clamp(40px,6vw,64px); border-bottom:1px solid var(--line); }
+  .hero-grid{ display:grid; grid-template-columns: 1.5fr 1fr; gap:48px; align-items:end; }
+  .hero h1{ font-size:clamp(48px, 8vw, 96px); font-weight:900; line-height:0.92; letter-spacing:-.01em; margin-top:14px; }
+  .hero h1 em{ font-style:normal; color:var(--crimson); }
+  .hero p.lead{ font-size:18px; max-width:46ch; margin-top:20px; }
+  .hero-cta{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+  .hero-aside{ border-left:1px solid var(--line); padding-left:28px; }
+  .hero-aside .quote{ font-family:"Big Shoulders Display"; font-weight:700; font-size:22px; line-height:1.15; }
+  .hero-aside .attrib{ font-family:"Space Mono"; font-size:11px; color:var(--ink-faint); margin-top:10px; text-transform:uppercase; letter-spacing:.06em; }
+
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:48px; border-top:1px solid var(--line); }
+  .stat{ padding:20px 24px 0; border-right:1px solid var(--line); }
+  .stat:last-child{ border-right:none; }
+  .stat .num{ font-family:"Big Shoulders Display"; font-weight:800; font-size:clamp(30px,4vw,44px); color:var(--crimson); line-height:1; }
+  .stat .label{ font-family:"Space Mono"; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); margin-top:6px; }
+
+  /* ---------- Itinerary strip ---------- */
+  .itinerary{ padding:26px 0; border-bottom:1px solid var(--line); background:var(--paper-raised); }
+  .itinerary .wrap{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .itinerary .tag{ font-family:"Space Mono"; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-faint); white-space:nowrap; }
+  .uni-list{ display:flex; flex-wrap:wrap; gap:10px 22px; }
+  .uni-list span{ font-family:"Archivo"; font-weight:600; font-size:14px; color:var(--ink-soft); position:relative; padding-left:14px; }
+  .uni-list span::before{ content:"—"; position:absolute; left:0; color:var(--crimson); }
+
+  section{ padding:clamp(56px,8vw,96px) 0; border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:44px; flex-wrap:wrap; }
+  .section-head h2{ font-size:clamp(32px,4.4vw,52px); font-weight:800; margin-top:10px; }
+  .section-head .desc{ max-width:38ch; }
+
+  /* ---------- Services index ---------- */
+  .index-list{ display:grid; grid-template-columns:1fr 1fr; gap:0 56px; border-top:1px solid var(--line); }
+  .index-item{ display:grid; grid-template-columns:70px 1fr; gap:18px; padding:26px 0; border-bottom:1px solid var(--line); }
+  .index-item .no{ font-family:"Space Mono"; font-weight:700; font-size:14px; color:var(--crimson); padding-top:2px; }
+  .index-item h3{ font-size:23px; font-weight:700; margin-bottom:8px; }
+  .index-item p{ font-size:14.5px; }
+
+  /* ---------- Art & design exhibit ---------- */
+  .exhibit-wall{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .exhibit-card{ background:var(--paper-raised); border:1px solid var(--line); padding:0; overflow:hidden; }
+  .exhibit-frame{
+    aspect-ratio:4/3; background:
+      repeating-linear-gradient(135deg, var(--crimson-tint), var(--crimson-tint) 10px, transparent 10px, transparent 20px),
+      linear-gradient(160deg, var(--ink) 0%, var(--ink-soft) 140%);
+    position:relative;
+  }
+  .exhibit-frame .stamp{
+    position:absolute; top:14px; right:14px; border:2px solid var(--gold); color:var(--gold);
+    font-family:"Space Mono"; font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+    padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.15);
+  }
+  .exhibit-frame .initial{
+    position:absolute; bottom:14px; left:16px; font-family:"Big Shoulders Display"; font-weight:900;
+    font-size:64px; color:rgba(251,246,239,0.92); line-height:1;
+  }
+  .exhibit-label{ padding:18px 20px 22px; border-top:1px solid var(--line); }
+  .exhibit-label .lbl-row{ font-family:"Space Mono"; font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); display:flex; justify-content:space-between; margin-bottom:8px; }
+  .exhibit-label h3{ font-size:20px; font-weight:700; }
+  .exhibit-label .prog{ font-size:14px; color:var(--ink-soft); margin-top:4px; }
+  .exhibit-label .inst{ font-family:"Archivo"; font-weight:700; font-size:13.5px; color:var(--crimson); margin-top:10px; }
+
+  /* ---------- Testimonials ---------- */
+  .quote-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+  .pull-quote{ border-top:3px solid var(--ink); padding-top:18px; }
+  .pull-quote p{ font-family:"Big Shoulders Display"; font-weight:600; font-size:21px; color:var(--ink); line-height:1.28; }
+  .pull-quote .who{ margin-top:16px; font-family:"Space Mono"; font-size:11.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em; }
+  .pull-quote .who b{ color:var(--crimson); font-style:normal; }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start; }
+  .credential-frame{
+    aspect-ratio:3/4; background:linear-gradient(165deg, var(--ink) 0%, #3a3226 100%);
+    position:relative; border:1px solid var(--line);
+  }
+  .credential-frame .mono-name{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
+  .credential-frame .mono-name span{ font-family:"Big Shoulders Display"; font-weight:900; font-size:44px; color:#EEE8D8; line-height:1.02; }
+  .credential-frame .plate{
+    position:absolute; bottom:16px; left:16px; right:16px; border-top:1px solid rgba(238,232,216,0.35); padding-top:10px;
+    font-family:"Space Mono"; font-size:10.5px; color:#C8BFA0; text-transform:uppercase; letter-spacing:.06em; display:flex; justify-content:space-between;
+  }
+  .about-copy p{ font-size:16px; margin-bottom:16px; }
+  .about-copy blockquote{ margin:26px 0; padding-left:20px; border-left:3px solid var(--crimson); font-family:"Big Shoulders Display"; font-weight:700; font-size:24px; color:var(--ink); }
+  .cred-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .cred-tags span{ font-family:"Space Mono"; font-size:11px; border:1px solid var(--line); padding:6px 10px; color:var(--ink-soft); }
+
+  /* ---------- Team masthead ---------- */
+  .masthead{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .staff{ background:var(--paper-raised); padding:22px 20px; }
+  .staff .role{ font-family:"Space Mono"; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--crimson); }
+  .staff h3{ font-size:19px; font-weight:700; margin-top:8px; }
+  .staff p{ font-size:13px; margin-top:8px; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+  .contact-info .line{ display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--line); font-size:15px; }
+  .contact-info .line span:first-child{ font-family:"Space Mono"; font-size:11px; text-transform:uppercase; color:var(--ink-faint); letter-spacing:.06em; }
+  .contact-info .line a{ text-decoration:none; font-weight:700; }
+  .contact-info .socials{ display:flex; gap:16px; margin-top:22px; }
+  .contact-info .socials a{ font-family:"Space Mono"; font-size:12px; text-decoration:underline; text-underline-offset:3px; }
+  form.demo-form{ display:flex; flex-direction:column; gap:14px; }
+  form.demo-form label{ font-family:"Space Mono"; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); }
+  form.demo-form input, form.demo-form textarea{
+    font-family:"Archivo"; font-size:15px; padding:12px 14px; border:1px solid var(--line); background:var(--paper);
+    color:var(--ink); border-radius:2px; width:100%;
+  }
+  form.demo-form textarea{ min-height:96px; resize:vertical; }
+  form.demo-form .form-note{ font-size:12px; color:var(--ink-faint); font-family:"Space Mono"; }
+
+  /* ---------- Footer / Solvarex credit ---------- */
+  footer.site{ background:var(--ink); color:var(--paper); border-bottom:none; }
+  footer.site h2, footer.site h3{ color:var(--paper); }
+  footer.site p{ color:#C9C2AC; }
+  .credit-band{ display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:center; }
+  .credit-band .btn-solid{ background:var(--crimson); border-color:var(--crimson); }
+  .foot-links{ display:flex; gap:26px; margin-top:26px; flex-wrap:wrap; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid #33301f; margin-top:40px; padding-top:20px; display:flex; justify-content:space-between; font-family:"Space Mono"; font-size:11px; color:#8A8368; flex-wrap:wrap; gap:10px; }
+
+  @media (max-width: 880px){
+    .hero-grid, .about-grid, .contact-grid, .credit-band{ grid-template-columns:1fr; }
+    .hero-aside{ border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:20px; }
+    .stat-row{ grid-template-columns:1fr; }
+    .stat{ border-right:none; border-bottom:1px solid var(--line); padding-bottom:16px; }
+    .index-list{ grid-template-columns:1fr; }
+    .exhibit-wall{ grid-template-columns:1fr; }
+    .quote-grid{ grid-template-columns:1fr; gap:30px; }
+    .masthead{ grid-template-columns:repeat(2,1fr); }
+    .nav-links{ display:none; }
+  }
+</style>
+
+<div class="proto-banner">
+  PROTOTYPE — built by <a href="#solvarex">Solvarex Ventures</a> on Divya K Narula's real content, to preview a live rebuild · not the current site
+</div>
+
+<header class="site">
+  <nav class="wrap">
+    <div class="brand">
+      <span class="name">DIVYA K NARULA</span>
+      <span class="sub">Career Insights · Study Abroad Counselling</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#art-design">Art &amp; Design</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-solid" href="#contact">Book a Session</a>
+  </nav>
+</header>
+
+<section class="hero" style="border-bottom:1px solid var(--line); padding-bottom:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Educational Counselling · Est. Portfolio Specialist</span>
+        <h1>From dreams<br>to <em>degrees.</em></h1>
+        <p class="lead">Fifteen years guiding students into the world's art, design and business schools — from first shortlist to visa stamp, with a specialism in portfolios that get artists into UAL, Central Saint Martins and beyond.</p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#contact">Schedule a Consultation</a>
+          <a class="btn btn-line" href="#art-design">View Placements →</a>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <p class="quote">"Divya Ma'am helped me get a seat at City University London for MSc Entrepreneurship — the process was smooth and fast throughout."</p>
+        <p class="attrib">Tusshar Goyal — Bayes Business School, CUL</p>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num">5,000+</div><div class="label">Students Guided</div></div>
+      <div class="stat"><div class="num">15+</div><div class="label">Years of Practice</div></div>
+      <div class="stat"><div class="num">20+</div><div class="label">Partner Institutions</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="itinerary">
+  <div class="wrap">
+    <span class="tag">Recent placements —</span>
+    <div class="uni-list">
+      <span>University of the Arts London</span>
+      <span>Central Saint Martins</span>
+      <span>Glasgow School of Art</span>
+      <span>Goldsmiths, University of London</span>
+      <span>Arts University Bournemouth</span>
+      <span>University of Westminster</span>
+      <span>London College of Fashion</span>
+      <span>Istituto Marangoni</span>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">What We Do</span>
+        <h2>The counselling index</h2>
+      </div>
+      <p class="desc">Six services, one continuous relationship — from first shortlist to the day the visa is stamped.</p>
+    </div>
+    <div class="index-list">
+      <div class="index-item"><div class="no">01</div><div><h3>University Selection</h3><p>Tailored shortlists built around academic goals, interests and aspirations, with detailed program and admission-criteria insight.</p></div></div>
+      <div class="index-item"><div class="no">02</div><div><h3>Application Assistance</h3><p>End-to-end management of documentation and deadlines, with structured brainstorming sessions along the way.</p></div></div>
+      <div class="index-item"><div class="no">03</div><div><h3>Essay Writing</h3><p>Personal statements built around a student's genuine strengths and experiences — never a template.</p></div></div>
+      <div class="index-item"><div class="no">04</div><div><h3>Interview Preparation</h3><p>Mock interviews and direct feedback, so confidence is built well before the real conversation.</p></div></div>
+      <div class="index-item"><div class="no">05</div><div><h3>Career Counselling</h3><p>Personalised guidance across career paths, industry trends and where the job market is actually heading.</p></div></div>
+      <div class="index-item"><div class="no">06</div><div><h3>Visa Assistance</h3><p>Step-by-step guidance through visa applications across every partner country.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="art-design">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Specialisation</span>
+        <h2>Art &amp; design portfolios</h2>
+      </div>
+      <p class="desc">Professional portfolio review and application guidance built to the standard of the world's top art schools.</p>
+    </div>
+    <div class="exhibit-wall">
+      <div class="exhibit-card">
+        <div class="exhibit-frame"><span class="stamp">Admitted</span><span class="initial">RK</span></div>
+        <div class="exhibit-label">
+          <div class="lbl-row"><span>Student</span><span>2024</span></div>
+          <h3>Rishi Khurana</h3>
+          <div class="prog">MA Fine Arts</div>
+          <div class="inst">UAL, Camberwell College of Art</div>
+        </div>
+      </div>
+      <div class="exhibit-card">
+        <div class="exhibit-frame"><span class="stamp">Admitted</span><span class="initial">NN</span></div>
+        <div class="exhibit-label">
+          <div class="lbl-row"><span>Student</span><span>2024</span></div>
+          <h3>Naina Nath</h3>
+          <div class="prog">BDes Product Design</div>
+          <div class="inst">Glasgow School of Art</div>
+        </div>
+      </div>
+      <div class="exhibit-card">
+        <div class="exhibit-frame"><span class="stamp">Admitted</span><span class="initial">MS</span></div>
+        <div class="exhibit-label">
+          <div class="lbl-row"><span>Student</span><span>2023</span></div>
+          <h3>Manali Shinde</h3>
+          <div class="prog">BA Fine Arts</div>
+          <div class="inst">Arts University Bournemouth</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">In Their Words</span><h2>What students say</h2></div>
+    </div>
+    <div class="quote-grid">
+      <div class="pull-quote">
+        <p>"I would really like to thank my admission counsellor, Divya Ma'am — my admissions process was smooth and fast throughout."</p>
+        <div class="who"><b>Tusshar Goyal</b><br>MSc Entrepreneurship, Bayes / City University London</div>
+      </div>
+      <div class="pull-quote">
+        <p>"Her willingness to help me at any time of day, coupled with her sweet and kind nature, made every interaction a positive experience."</p>
+        <div class="who"><b>Divyansh Singhal</b><br>MSc Business Analytics, Birmingham University</div>
+      </div>
+      <div class="pull-quote">
+        <p>"It was a pleasure being associated with Divya Ma'am for my admission and visa guidance — I am 100% satisfied."</p>
+        <div class="who"><b>Rishi Khurana</b><br>MA Painting, UAL Camberwell College of Art</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="credential-frame">
+        <div class="mono-name"><span>D.K.N.</span></div>
+        <div class="plate"><span>Delhi Univ. · Symbiosis</span><span>Est. Practice</span></div>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">About Divya</span>
+        <h2 style="margin-top:10px; font-size:clamp(28px,3.6vw,42px);">Dedication. Expertise. Passion.</h2>
+        <p style="margin-top:18px;">A graduate of Delhi University with a post-graduate diploma from Symbiosis College, Pune, Divya has spent over fifteen years in education counselling — working with more than 5,000 students on their path from application to acceptance.</p>
+        <p>She holds multiple career-counselling certifications and has trained with top-ranked universities worldwide, staying current through education fairs, workshops and forums — with a particular specialisation in art and design guidance.</p>
+        <blockquote>"Our mission is to empower students to achieve their academic aspirations through expert guidance, personalised support, and comprehensive application assistance."</blockquote>
+        <div class="cred-tags">
+          <span>Career Counselling Certified</span>
+          <span>Art &amp; Design Specialist</span>
+          <span>15+ Years Practice</span>
+          <span>5,000+ Students Guided</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">The Practice</span><h2>Masthead</h2></div>
+      <p class="desc">An experienced faculty across counselling, psychology, language coaching and visa guidance.</p>
+    </div>
+    <div class="masthead">
+      <div class="staff"><div class="role">Editor-in-Chief</div><h3>Anshika Kumar</h3><p>Delhi University &amp; Warwick alumna · 8 yrs · 10,000+ applications guided</p></div>
+      <div class="staff"><div class="role">Lead Counsellor</div><h3>Pooja Sharma</h3><p>10+ years assisting study-abroad applications</p></div>
+      <div class="staff"><div class="role">Lead Psychologist</div><h3>Puruvi Sirohi Singh Tara</h3><p>PhD · 15+ years experience</p></div>
+      <div class="staff"><div class="role">Counselling Psychologist</div><h3>Alankrita Kumar</h3><p>4+ years · leads Sulhaa Healthcare</p></div>
+      <div class="staff"><div class="role">Counselling Psychologist</div><h3>Namrata Chatterjee</h3><p>4+ years in psychosocial healthcare</p></div>
+      <div class="staff"><div class="role">IELTS Coach</div><h3>Heena B Bhalla</h3><p>8+ years teaching English-language skills</p></div>
+      <div class="staff"><div class="role">Visa Consultant</div><h3>Vinod Kanojia</h3><p>10 years across multiple country visa applications</p></div>
+      <div class="staff" style="display:flex; align-items:center; justify-content:center; text-align:center;"><p style="font-family:'Space Mono'; font-size:12px; text-transform:uppercase; letter-spacing:.06em;">Full faculty listed on the live site</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Get In Touch</span><h2>Start the conversation</h2></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="line"><span>Phone / WhatsApp</span><a href="tel:+919871972972">+91 98719 72972</a></div>
+        <div class="line"><span>Email</span><a href="mailto:contact@divyaknarula.com">contact@divyaknarula.com</a></div>
+        <div class="line"><span>Based In</span><span>New Delhi, India</span></div>
+        <div class="socials">
+          <a href="https://www.instagram.com/divya_counsels/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=61560009206240" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.linkedin.com/company/career-insights-by-divya-k-narula/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <form class="demo-form" onsubmit="return false;">
+        <div><label for="nm">Name</label><input id="nm" type="text" placeholder="Your name"></div>
+        <div><label for="ph">Mobile</label><input id="ph" type="tel" placeholder="+91"></div>
+        <div><label for="em">Email</label><input id="em" type="email" placeholder="you@example.com"></div>
+        <div><label for="ms">Message</label><textarea id="ms" placeholder="Tell us about your goals"></textarea></div>
+        <a class="btn btn-solid" href="#contact" style="text-align:center;">Send Enquiry</a>
+        <span class="form-note">Demo form — on the live site this connects directly to email/WhatsApp.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site" id="solvarex">
+  <div class="wrap" style="padding:clamp(48px,7vw,72px) 0 28px;">
+    <div class="credit-band">
+      <div>
+        <span class="eyebrow" style="color:var(--gold);">Prototype Note</span>
+        <h2 style="font-size:clamp(26px,3.2vw,38px); margin-top:12px;">This is a free demo, built by Solvarex Ventures.</h2>
+        <p style="margin-top:14px; max-width:56ch;">Every word above is real — pulled from the current divyaknarula.com — rebuilt on a faster, mobile-first foundation to show what a live relaunch could look like. Full technical breakdown, timeline and pricing are in the attached company profile.</p>
+        <div class="foot-links">
+          <a href="mailto:contact@solvarexventures.com" style="text-decoration:underline;">contact@solvarexventures.com</a>
+          <a href="tel:+919119173956" style="text-decoration:underline;">+91 91191 73956</a>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <a class="btn btn-solid" href="mailto:contact@solvarexventures.com?subject=Website%20Revamp%20-%20Let%27s%20talk">Let's Make It Live →</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Solvarex Ventures — GST &amp; MSME Registered — Website Prototype, September 2026</span>
+      <span>Content © Divya K Narula. Prototype for review purposes only.</span>
+    </div>
+  </div>
+</footer>
